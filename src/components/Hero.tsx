@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import ModelViewer from "../../public/ModelViewer";
 
@@ -12,7 +10,10 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden"
+    >
       {/* Abstract shapes for background */}
       <div className="absolute -right-40 -top-40 w-96 h-96 rounded-full bg-black opacity-20"></div>
       <div className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-black opacity-10"></div>

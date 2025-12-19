@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,22 +38,25 @@ const NavBar: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-playfair font-bold text-charcoal">
-            <span className="text-pistachio"><a href="Hero">Ahmed Hassan</a></span>
+            <button
+              onClick={() => scrollToSection("hero")}
+              className="text-pistachio hover:opacity-80 transition-opacity"
+            >
+              Ahmed Hassan
+            </button>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {["about", "projects", "services", "Experience"].map(
-              (section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className="font-inter text-charcoal hover:text-pistachio transition-colors capitalize"
-                >
-                  {section}
-                </button>
-              )
-            )}
+            {["about", "projects", "services", "Experience"].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="font-inter text-charcoal hover:text-pistachio transition-colors capitalize"
+              >
+                {section}
+              </button>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
