@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useScroll } from "framer-motion";
 import { ProjectCard } from "./ProjectCard";
 import { PROJECTS_DATA, ProjectItem } from "../data/projectsData";
@@ -8,18 +8,19 @@ export const Projects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeProject, setActiveProject] = useState<ProjectItem | null>(null);
 
-  // Lock background scroll when modal is open (especially on mobile)
+  // Lock background scroll when modal is open
   useEffect(() => {
     if (activeProject) {
-      const scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
-      document.body.style.position = "relative";
-      document.body.style.touchAction = "none";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setActiveProject(null);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
       return () => {
         document.body.style.overflow = "";
-        document.body.style.position = "";
-        document.body.style.touchAction = "";
-        window.scrollTo(0, scrollY);
+        window.removeEventListener("keydown", handleKeyDown);
       };
     }
   }, [activeProject]);
@@ -72,17 +73,15 @@ export const Projects: React.FC = () => {
       {/* ── Project Detail Modal ───────────────────────────────────── */}
       {activeProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/85 backdrop-blur-md"
+          className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md overflow-y-auto"
           onClick={() => setActiveProject(null)}
-          style={{ touchAction: "auto" }}
         >
           <div
-            className="bg-[#202226] border border-white/10 rounded-3xl max-w-3xl w-full max-h-[88vh] overflow-y-auto shadow-2xl text-white relative overscroll-contain"
-            style={{ WebkitOverflowScrolling: "touch" }}
+            className="bg-[#202226] border border-white/10 rounded-2xl md:rounded-3xl max-w-3xl w-full max-h-[90dvh] overflow-y-auto shadow-2xl text-white relative my-auto overscroll-contain flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Image Banner */}
-            <div className="h-60 md:h-72 w-full relative overflow-hidden bg-black/40">
+            <div className="h-44 sm:h-56 md:h-72 w-full relative overflow-hidden bg-black/40 shrink-0">
               <img
                 src={activeProject.image}
                 alt={activeProject.title}
@@ -93,7 +92,7 @@ export const Projects: React.FC = () => {
               {/* Close Button */}
               <button
                 onClick={() => setActiveProject(null)}
-                className="absolute top-4 right-4 p-2.5 rounded-full bg-black/70 hover:bg-black text-white border border-white/20 transition-all duration-200"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 p-2.5 rounded-full bg-black/80 hover:bg-black text-white border border-white/20 transition-all duration-200 shadow-xl cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -101,8 +100,8 @@ export const Projects: React.FC = () => {
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 md:p-8 space-y-6">
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+            <div className="p-5 sm:p-6 md:p-8 space-y-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
                 <span className="text-xs uppercase tracking-[0.2em] text-[#FF6B35] font-semibold">
                   {activeProject.category}
                 </span>
@@ -120,7 +119,7 @@ export const Projects: React.FC = () => {
                 )}
               </div>
 
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-white">
+              <h3 className="font-playfair text-xl sm:text-2xl md:text-3xl font-bold text-white">
                 {activeProject.title}
               </h3>
 
@@ -146,7 +145,7 @@ export const Projects: React.FC = () => {
 
               {/* Result - Clean Editorial Format */}
               {activeProject.result && (
-                <div className="space-y-1.5 pt-2 border-t border-white/10">
+                <div className="space-y-1.5 pt-3 border-t border-white/10">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-white/50">
                     Result &amp; Impact
                   </h4>
@@ -155,6 +154,16 @@ export const Projects: React.FC = () => {
                   </p>
                 </div>
               )}
+
+              {/* Bottom Close Button for Mobile Accessibility */}
+              <div className="pt-4 border-t border-white/10 flex justify-end">
+                <button
+                  onClick={() => setActiveProject(null)}
+                  className="px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-semibold transition-colors"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

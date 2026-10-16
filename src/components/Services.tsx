@@ -354,24 +354,24 @@ const Services: React.FC = () => {
       {/* ── Rich Service Detail Modal ─────────────────────────────── */}
       {activeModalService && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/80 backdrop-blur-md pointer-events-auto"
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6 bg-black/85 backdrop-blur-md pointer-events-auto overflow-y-auto"
           onClick={() => setActiveModalService(null)}
         >
           <div
-            className="bg-[#202226] border border-white/15 rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl text-white relative animate-fade-in"
+            className="bg-[#202226] border border-white/15 rounded-2xl md:rounded-3xl max-w-xl w-full p-5 sm:p-6 md:p-8 shadow-2xl text-white relative animate-fade-in max-h-[90dvh] overflow-y-auto my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setActiveModalService(null)}
-              className="absolute top-4 right-4 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all"
+              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/70 hover:bg-black text-white border border-white/20 transition-all cursor-pointer shadow-lg"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Modal Header */}
-            <div className="flex items-center gap-4 mb-6 border-b border-white/10 pb-4">
+            <div className="flex items-center gap-4 mb-6 border-b border-white/10 pb-4 pr-10">
               <div
                 className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${activeModalService.gradient} flex items-center justify-center border border-white/20 shadow-lg shrink-0`}
               >
@@ -413,6 +413,16 @@ const Services: React.FC = () => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Bottom Close Button */}
+            <div className="pt-5 mt-6 border-t border-white/10 flex justify-end">
+              <button
+                onClick={() => setActiveModalService(null)}
+                className="px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-semibold transition-colors"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
