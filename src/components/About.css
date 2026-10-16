@@ -1,0 +1,253 @@
+﻿/* ============================================================
+   About Section — Professional Scroll-Triggered Text Reveal
+   ============================================================ */
+
+.anim-text-container {
+  background: #1E1E1E;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.anim-text-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem 1.5rem;
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* ── Section Tag ───────────────────────────────────────────── */
+.about-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-label::before,
+.about-label::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Main Heading ──────────────────────────────────── */
+.about-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* ── Animated Text Block ───────────────────────────────────── */
+.anim-text {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.anim-paragraph {
+  line-height: 2.2;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Word Token ─────────────────────────────────────────────── */
+.word {
+  display: inline-block;
+  position: relative;
+  padding: 0.08em 0.28em;
+  border-radius: 0.35em;
+  margin: 0.08em 0.12em;
+  will-change: opacity, transform;
+  background: rgba(255, 255, 255, calc(var(--bg-opacity, 0) * 0.12));
+  vertical-align: middle;
+}
+
+.word > span {
+  font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+  font-weight: 400;
+  color: #f3eee8;
+  position: relative;
+  z-index: 1;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ── Keyword Highlight ──────────────────────────────────────── */
+.keyword-wrapper {
+  background: transparent !important;
+  margin: 0.08em 0.16em;
+}
+
+.keyword {
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+.keyword::before {
+  content: '';
+  position: absolute;
+  inset: -0.12em -0.32em;
+  border-radius: 0.35em;
+  background: var(--kw-color, #FF6B35);
+  opacity: var(--bg-opacity, 0);
+  z-index: 0;
+}
+
+.keyword > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Skills Section (Clear, Dedicated, Visible) ─────────────── */
+.about-skills-container {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.about-skills-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  position: relative;
+  display: inline-block;
+}
+
+.about-skills-title::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: #FF6B35;
+  border-radius: 2px;
+  margin: 0.3rem auto 0;
+}
+
+.about-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.about-skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 1rem;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2ded8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+}
+
+.about-skill-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.about-skill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Mobile Optimization ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .anim-text-inner {
+    padding: 2.5rem 1rem 1rem;
+  }
+
+  .about-heading {
+    font-size: 1.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .anim-paragraph {
+    line-height: 2.1;
+    margin-bottom: 0.45rem;
+  }
+
+  .word {
+    padding: 0.05em 0.22em;
+    margin: 0.05em 0.07em;
+  }
+
+  .word > span {
+    font-size: 0.88rem;
+  }
+
+  .about-skills-title {
+    font-size: 1.15rem;
+  }
+
+  .about-skill-item {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .anim-text-inner {
+    padding: 2rem 0.8rem 0.75rem;
+  }
+
+  .about-heading {
+    font-size: 1.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .word > span {
+    font-size: 0.82rem;
+  }
+
+  .anim-paragraph {
+    line-height: 2.0;
+  }
+
+  .about-skills-list {
+    gap: 0.4rem;
+  }
+
+  .about-skill-item {
+    font-size: 0.72rem;
+    padding: 0.32rem 0.7rem;
+  }
+}

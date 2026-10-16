@@ -40,9 +40,9 @@ const Experience: React.FC = () => {
 
   return (
     <section
-      id="Experience"
+      id="experience"
       className="section-padding "
-      style={{ backgroundColor: "#1B1B1D" }}
+      style={{ backgroundColor: "#1E1E1E" }}
     >
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12">

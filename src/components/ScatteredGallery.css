@@ -1,0 +1,162 @@
+.scattered-gallery-container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  background-color: #1E1E1E;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Spotlight Hero Section (Unified #1E1E1E Background) */
+.scattered-gallery-container .spotlight-hero-section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1E1E1E;
+}
+
+/* 3D Perspective Stage */
+.scattered-gallery-container .spotlight-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.scattered-gallery-container .gallery-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 350px;
+  margin-top: -175px;
+  margin-left: -130px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Final Background Video Container */
+.scattered-gallery-container .hero-cover-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.scattered-gallery-container .hero-video-element,
+.scattered-gallery-container .hero-cover-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay Gradient */
+.scattered-gallery-container .hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(30, 30, 30, 0.4) 0%, rgba(30, 30, 30, 0.2) 40%, rgba(30, 30, 30, 0.6) 100%);
+  pointer-events: none;
+}
+
+.scattered-gallery-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Bottom Full-Width Hero Title Container */
+.scattered-gallery-container .hero-content-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 1rem;
+  pointer-events: none;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+}
+
+/* Initial Entry Title: 'Hello' in font 'Oi' over #1E1E1E background */
+.scattered-gallery-container .title-hello {
+  font-family: 'Oi', cursive, display, sans-serif;
+  font-size: clamp(4rem, 16vw, 17rem);
+  font-weight: 400;
+  line-height: 0.9;
+  color: #7d7d7d;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0 1rem;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+/* Final Reveal Title: 'The story begins here' in Ultra-Bold */
+.scattered-gallery-container .title-story {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2.5rem, 8.5vw, 9.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  padding: 0 1.5rem;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scattered-gallery-container .gallery-image {
+    width: 190px;
+    height: 260px;
+    margin-top: -130px;
+    margin-left: -95px;
+  }
+  
+  .scattered-gallery-container .title-hello {
+    font-size: clamp(3rem, 18vw, 6rem);
+    padding-bottom: 1rem;
+  }
+
+  .scattered-gallery-container .title-story {
+    font-size: clamp(2.2rem, 9.5vw, 4rem);
+    padding: 0 0.75rem 1rem 0.75rem;
+    white-space: normal;
+    line-height: 1.1;
+  }
+}
